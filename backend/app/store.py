@@ -8,6 +8,8 @@ from typing import Any
 
 from app.seed import SEED_ROWS
 
+MODULE_LABELS = {"drill": "应急演练"}
+
 
 class Store:
     def __init__(self) -> None:
@@ -33,17 +35,31 @@ class Store:
             rows = self.rows(name)
             modules.append({
                 "name": name,
+                "label": MODULE_LABELS.get(name, name),
                 "created": len(rows),
                 "pending": sum(1 for row in rows if row.get("pending")),
                 "abnormal": sum(1 for row in rows if row.get("abnormal")),
             })
+        drill_evaluations = [
+            {
+                "id": row.get("id"),
+                "演练科目": row.get("演练科目", ""),
+                "参演单位": row.get("参演单位", ""),
+                "计划日期": row.get("计划日期", ""),
+                "组织人": row.get("组织人", ""),
+                "评估结论": row.get("评估结论", ""),
+                "发现问题": row.get("发现问题", ""),
+            }
+            for row in self.rows("drill")
+            if row.get("status") == "已评估" and str(row.get("评估结论") or "").strip()
+        ]
         cards = [
             {"label": "业务模块", "value": len(modules)},
             {"label": "今日新增", "value": sum(int(item["created"]) for item in modules)},
             {"label": "待处理", "value": sum(int(item["pending"]) for item in modules)},
             {"label": "异常量", "value": sum(int(item["abnormal"]) for item in modules)},
         ]
-        return {"cards": cards, "modules": modules}
+        return {"cards": cards, "modules": modules, "drill_evaluations": drill_evaluations}
 
 
 store = Store()

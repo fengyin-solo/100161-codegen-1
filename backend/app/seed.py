@@ -4,6 +4,7 @@ from __future__ import annotations
 from typing import Any
 
 SEED_ROWS: dict[str, list[dict[str, Any]]] = {
+    "drill": [],
     "flight": [{'id': 1,
   'status': '待确认',
   'pending': True,

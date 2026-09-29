@@ -31,5 +31,41 @@ body { margin: 0; background: #f6f8fb; color: #1f2937; }
 .btn.primary { background: var(--brand); border-color: var(--brand); color: #fff; }
 .btn.ghost { background: transparent; }
 .link { border: none; background: none; color: var(--brand); cursor: pointer; padding: 0; }
-.page-foot { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: var(--muted); }
+.page-foot { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: var(--muted); gap: 12px; }
 .error-text { color: #b42318; }
+.success-text { color: #067647; }
+.muted-text { color: var(--muted); }
+.page-actions { display: flex; gap: 8px; }
+.btn[role='link'], a.btn { text-decoration: none; color: inherit; display: inline-flex; align-items: center; }
+
+/* 应急演练：内联登记表单 */
+.inline-form { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; margin-bottom: 12px; }
+.inline-form h3, .modal-card h3 { margin: 0 0 8px; font-size: 14px; }
+.form-grid { display: flex; flex-wrap: wrap; gap: 10px 16px; }
+.form-grid .filter-item { flex: 1 1 220px; }
+.filter-item textarea { width: 100%; resize: vertical; border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; font: inherit; }
+.filter-item input, .filter-item select { border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; font: inherit; min-width: 160px; }
+.filter-item.full { flex-basis: 100%; }
+.filter-check { display: flex; align-items: center; gap: 4px; font-size: 13px; color: var(--muted); }
+.form-actions { display: flex; gap: 8px; margin-top: 10px; }
+
+/* 应急演练：补录评估弹层 */
+.modal-mask { position: fixed; inset: 0; background: rgba(16, 24, 40, 0.45); display: flex; align-items: center; justify-content: center; z-index: 20; }
+.modal-card { background: #fff; border-radius: 10px; padding: 18px 20px; width: 520px; max-width: calc(100vw - 32px); box-shadow: 0 12px 32px rgba(16, 24, 40, 0.25); }
+.modal-tip { margin: 0 0 10px; font-size: 12px; color: var(--muted); }
+.modal-card .filter-item { display: block; margin-bottom: 10px; }
+.modal-card textarea { width: 100%; resize: vertical; border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; font: inherit; }
+
+/* 状态标签与长文本截断 */
+.status-tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 12px; white-space: nowrap; }
+.status-todo { background: #f2f4f7; color: #475467; }
+.status-running { background: #fffaeb; color: #b54708; }
+.status-done { background: #ecfdf3; color: #067647; }
+.cell-clamp { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; max-width: 260px; line-height: 1.4; }
+.issue-text { color: #b42318; }
+
+/* 概览入口的应急演练分区 */
+.drill-overview { margin-top: 20px; }
+.drill-cols { display: flex; gap: 12px; flex-wrap: wrap; }
+.drill-col { flex: 1 1 420px; }
+.drill-col-title { margin: 4px 0 8px; font-size: 14px; }

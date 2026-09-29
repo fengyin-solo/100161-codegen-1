@@ -8,6 +8,29 @@ from typing import Any
 
 from app.seed import SEED_ROWS
 
+# 概览入口展示的中文模块名。
+MODULE_LABELS = {
+    "flight": "航班计划",
+    "stand": "机位资源",
+    "apron": "机坪巡查",
+    "bridge": "廊桥对接",
+    "deicing": "除冰作业",
+    "fueling": "航油加注",
+    "baggage": "行李装卸",
+    "cargo": "货邮装载",
+    "catering": "航空配餐",
+    "shuttle": "摆渡接送",
+    "towing": "航空器牵引",
+    "loadsheet": "载重平衡",
+    "permit": "通行证件",
+    "gse": "保障车辆",
+    "safety": "安全监察",
+    "agreement": "保障协议",
+    "settlement": "保障结算",
+    "training": "资质培训",
+    "drill": "应急演练",
+}
+
 
 class Store:
     def __init__(self) -> None:
@@ -33,6 +56,7 @@ class Store:
             rows = self.rows(name)
             modules.append({
                 "name": name,
+                "label": MODULE_LABELS.get(name, name),
                 "created": len(rows),
                 "pending": sum(1 for row in rows if row.get("pending")),
                 "abnormal": sum(1 for row in rows if row.get("abnormal")),

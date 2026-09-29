@@ -10,6 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 from app.routers import ROUTERS
+from app.services.drill import DrillService
 from app.store import store
 
 app = FastAPI(title="机场地面保障调度平台", version="1.0.0")
@@ -34,5 +35,7 @@ def health() -> dict[str, object]:
 
 @app.get("/api/overview")
 def overview() -> dict[str, object]:
-    """运营概览：把各业务模块的待处理量汇总成看板卡片。"""
-    return store.overview()
+    """运营概览：各业务模块待处理量看板，加上应急演练台账的同一份评估结果。"""
+    payload = store.overview()
+    payload["drill"] = DrillService().overview_section()
+    return payload

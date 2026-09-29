@@ -244,3 +244,15 @@ class TrainingEntry(BaseModel):
     field_5: str | None = None  # 考核成绩
     field_6: str | None = None  # 培训日期
     field_7: str | None = None  # 培训状态
+
+class DrillEntry(BaseModel):
+    """应急演练计划明细结构。"""
+
+    field_0: str | None = None  # 演练编号
+    field_1: str | None = None  # 演练科目
+    field_2: str | None = None  # 参演单位
+    field_3: str | None = None  # 计划日期
+    field_4: str | None = None  # 组织人
+    field_5: str | None = None  # 评估结论
+    field_6: str | None = None  # 发现问题
+    field_7: str | None = None  # 演练状态
